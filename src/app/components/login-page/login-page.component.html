@@ -1,0 +1,19 @@
+<div class="form">
+  <h1 class="form__title">Iniciar Sesión</h1>
+  <form action="" class="form__form" (submit)="loginUser()" [formGroup]="loginForm">
+    <label for="email" class="form__label">Correo:</label>
+    <input [ngClass]="!loginForm.controls['email'].valid && loginForm.controls['email'].touched ? 'form__input form__input--invalid' : 'form__input'"
+            formControlName="email" type="email" name="email" placeholder="Correo" [(ngModel)]="email">
+
+    <label for="password" class="form__label">Contraseña:</label>
+    <input [ngClass]="!loginForm.controls['password'].valid && loginForm.controls['password'].touched ? 'form__input form__input--invalid' : 'form__input'"
+            formControlName="password" type="password" name="password" placeholder="Contraseña" class="form__input" [(ngModel)]="password">
+
+    <input [disabled]="!loginForm.valid" type="submit" value="Iniciar sesión" class="form__submit">
+  </form>
+  <a href="" class="register__recovery" (click)="resetPassword()">Olvidaste tu contraseña?</a>
+
+  <p class="register__message">No tienes cuenta?</p>
+  <a href="" routerLink="/register" class="register__link">Regístrarse</a>
+
+</div>

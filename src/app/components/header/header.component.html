@@ -1,0 +1,39 @@
+<header class="header">
+  <div class="header__container l-container">
+    <a href='/' class='header__link' *ngIf="!isLogin">
+      <img alt='Logo' class='header__logo' src='http://uxxi.elpoli.edu.co/formulario/imagenes/logo_pjic.jpg' />
+    </a>
+    <a href='/subjects' class='header__link' *ngIf="isLogin && rol==='Profesor'">
+      <img alt='Logo' class='header__logo' src='http://uxxi.elpoli.edu.co/formulario/imagenes/logo_pjic.jpg' />
+    </a>
+    <a href='/notes' class='header__link' *ngIf="isLogin && rol==='Estudiante'">
+      <img alt='Logo' class='header__logo' src='http://uxxi.elpoli.edu.co/formulario/imagenes/logo_pjic.jpg' />
+    </a>
+    <div class="menu__icon" [ngClass]="animatedIconMenu ? 'menu__icon menu__icon--active' : menu__icon" (click)="showMenu()"> <span class='menu__icon--next'> </span></div>
+    <nav class="nav" [ngClass]="animatedMenu ? 'nav nav--show' : nav">
+      <ul class="menu">
+        <li class="menu__item" *ngIf="!isLogin">
+          <a href="" routerLink='/home' class="menu__link" (click)="showMenu()">Inicio</a>
+        </li>
+        <li class="menu__item" *ngIf="isLogin && rol==='Profesor'">
+          <a href="" routerLink='/subjects' class="menu__link" (click)="showMenu()">Grupos</a>
+        </li>
+        <li class="menu__item" *ngIf="isLogin && rol==='Estudiante'">
+          <a href="" routerLink='/notes' class="menu__link" (click)="showMenu()">Notas</a>
+        </li>
+        <li class="menu__item" *ngIf="!isLogin">
+          <a href="" routerLink='/login' class="menu__link" (click)="showMenu()">Iniciar sesión</a>
+        </li>
+        <li class="menu__item" *ngIf="!isLogin">
+          <a href="" routerLink='/register' class="menu__link" (click)="showMenu()">Registrarse</a>
+        </li>
+        <li class="menu__item" *ngIf="isLogin">
+          <a href="" routerLink='/profile' class="menu__link" (click)="showMenu()">Perfil</a>
+        </li>
+        <li class="menu__item menu__item--logout" *ngIf="isLogin">
+          <a href="" class="menu__link menu__link--logout" (click)="logout()" (click)="showMenu()">Salir</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

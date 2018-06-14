@@ -1,0 +1,217 @@
+@import '../shared/mixins.scss';
+@import '../shared/variables.scss';
+@import '../shared/typography.scss';
+
+.header {
+  padding: 1em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  transition: background .5s cubic-bezier(.54,.11,.24,1.63) , padding .5s cubic-bezier(.54,.11,.24,1.63);
+  background: color(white);
+  border-bottom: 1px solid color(border-color);
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include from($large) {
+      grid-template-columns: 55% 45%;
+    }
+  }
+
+  &__link {
+    width: 80px;
+  }
+
+  &__logo{
+    height: 80px;
+    width: auto;
+  }
+
+  .nav {
+    position: fixed;
+    width: 100%;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+    padding: 0 3em;
+    transform: translate(-100%);
+    transition: transform .5s ease;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+
+    @include from($large) {
+      position: relative;
+      min-height: auto;
+      transform: translate(0);
+      top: 0;
+      grid-column-start: 2;
+      grid-column-end: 4;
+      padding: 0;
+      background: transparent;
+      z-index: 10;
+    }
+
+    .menu {
+      text-align: center;
+      display: grid;
+      width: 100%;
+
+      @include from($large) {
+        display: flex;
+        align-items: center;
+      }
+
+      &__item {
+        padding: 16px;
+        justify-self: center;
+        text-transform: uppercase;
+        border-bottom: 2px solid rgba(color(principal-color), .15);
+        width: 60%;
+
+        @include from($large) {
+          width: 100%;
+          padding: 0;
+          border: none;
+          cursor: pointer;
+          z-index: 50;
+          padding: 0.3em 0;
+        }
+
+        &--logout {
+          transition: background .3s ease;
+          @include from($large) {
+            background: color(secondary-color);
+            transform: skewX(-5deg);
+            font-size: 14px;
+            &:hover {
+              border: none;
+              background: darken(color(secondary-color), 20);
+            }
+          }
+        }
+      }
+
+      &__link {
+        color: color(principal-color);
+        font-size: 16px;
+        font-weight: bold;
+
+        @include from($large) {
+          padding-top: 0.5em;
+          transition: border-top .1s cubic-bezier(.54,.11,.24,1.63);
+
+          &:hover {
+            border-top: 3px solid color(principal-color);
+          }
+        }
+
+        &--logout {
+          @include from($large) {
+            color: color(white);
+
+            &:hover {
+              border-top: none;
+            }
+          }
+        }
+      }
+    }
+
+    &--show {
+      transform: translate(0);
+      background: color(white);
+
+      .menu__item {
+        animation: menu .6s cubic-bezier(.54,.11,.24,1.63) both;
+
+        @include from($large) {
+          animation: none;
+        }
+
+        @for $i from 0 through 5 {
+          &:nth-child(#{$i}) {
+           animation-delay: #{$i * 0.06}s;
+          }
+        }
+
+        @keyframes menu {
+          from {
+            transform: translate(-100%);
+          }
+
+          to {
+            transform: translate(0);
+          }
+        }
+      }
+    }
+  }
+
+  .menu__icon {
+    position: relative;
+    align-self: center;
+    transform: skewX(-5deg);
+
+    @include from($large) {
+      display: none;
+    }
+
+    &:before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: color(principal-color);
+      top: -8px;
+      right: 0;
+      position: absolute;
+      transition: transform .5s cubic-bezier(.54,.11,.24,1.63);
+    }
+
+    &:after {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: color(principal-color);
+      top: 8px;
+      right: 0;
+      position: absolute;
+      transition: transform .5s cubic-bezier(.54,.11,.24,1.63);
+    }
+
+    &--next {
+
+      &:after {
+        content: '';
+        width: 28px;
+        height: 2px;
+        background: color(principal-color);
+        top: 0;
+        right: 0;
+        position: absolute;
+      }
+    }
+
+    &--active {
+
+      .menu__icon--next {
+        display: none;
+      }
+
+      &:before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+
+      &:after {
+        transform: rotate(-45deg);
+        top: 0;
+      }
+
+    }
+  }
+}

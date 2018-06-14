@@ -1,0 +1,22 @@
+<div class="form">
+  <h1 class="form__title">Registro</h1>
+  <form action="" class="form__form" (submit)="registerUser()" [formGroup]="registerForm">
+    <label for="email" class="form__label">Correo:</label>
+    <input [ngClass]="!registerForm.controls['email'].valid && registerForm.controls['email'].touched ? 'form__input form__input--invalid' : 'form__input'"
+            formControlName="email" type="email" name="email" placeholder="Correo" [(ngModel)]="email">
+
+    <label for="password" class="form__label">Contraseña:</label>
+    <input [ngClass]="!registerForm.controls['password'].valid && registerForm.controls['password'].touched ? 'form__input form__input--invalid' : 'form__input'"
+            formControlName="password" type="password" name="password" placeholder="Contraseña" [(ngModel)]="password">
+
+    <label for="rol" class="form__label">Tipo de usuario:</label>
+    <select [(ngModel)]="rol" formControlName="rol" placeholder="Rol" name="rol" id="rol" [ngClass]="!registerForm.controls['rol'].valid && registerForm.controls['rol'].touched ? 'form__input form__input--select form__input--invalid' : 'form__input form__input--select'">
+      <option value="Profesor">Profesor</option>
+      <option value="Estudiante">Estudiante</option>
+    </select>
+
+    <input [disabled]="!registerForm.valid" type="submit" value="Registrarse" class="form__submit">
+  </form>
+  <p class="register__message">Ya tienes cuenta?</p>
+  <a href="" routerLink="/login" class="register__link">Iniciar sesión</a>
+</div>

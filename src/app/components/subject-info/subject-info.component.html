@@ -1,0 +1,120 @@
+<div class="container l-container">
+  <div class="form">
+      <h1 *ngIf="subject">{{subject.name}}</h1>
+
+      <h5 class="form__title">Agregar estudiante</h5>
+      <form action="" class="form__form" (submit)="addStudent()" [formGroup]="subjectForm">
+        <label for="name" class="form__label">Nombres:</label>
+        <input [ngClass]="!subjectForm.controls['name'].valid && subjectForm.controls['name'].touched ? 'form__input form__input--invalid' : 'form__input'"
+        class="form__input" formControlName="name" type="name" name="name" placeholder="Nombre" [(ngModel)]="name">
+
+        <label for="lastName" class="form__label">Apellidos:</label>
+        <input [ngClass]="!subjectForm.controls['lastName'].valid && subjectForm.controls['lastName'].touched ? 'form__input form__input--invalid' : 'form__input'"
+                formControlName="lastName" type="lastName" name="lastName" placeholder="Apellidos" class="form__input" [(ngModel)]="lastName">
+
+        <label for="lastName" class="form__label">Nota seguimiento:</label>
+        <input [ngClass]="!subjectForm.controls['note1'].valid && subjectForm.controls['note1'].touched ? 'form__input form__input--invalid' : 'form__input'"
+                formControlName="note1" type="number" name="note1" placeholder="Nota seguimiento" class="form__input" [(ngModel)]="note1">
+
+        <label for="note2" class="form__label">Nota parcial:</label>
+        <input [ngClass]="!subjectForm.controls['note2'].valid && subjectForm.controls['note2'].touched ? 'form__input form__input--invalid' : 'form__input'"
+                formControlName="note2" type="number" name="note2" placeholder="Nota parcial" class="form__input" [(ngModel)]="note2">
+
+        <label for="note3" class="form__label">Nota final:</label>
+        <input [ngClass]="!subjectForm.controls['note3'].valid && subjectForm.controls['note3'].touched ? 'form__input form__input--invalid' : 'form__input'"
+                formControlName="note3" type="number" name="note3" placeholder="Nota final" class="form__input" [(ngModel)]="note3">
+
+        <input [disabled]="!subjectForm.valid" type="submit" value="Agregar" class="form__submit">
+      </form>
+
+    </div>
+
+    <div class="subjects">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="table__th">Nombres</th>
+              <th class="table__th">Apellidos</th>
+              <th class="table__th">Seguimiento</th>
+              <th class="table__th">Parcial</th>
+              <th class="table__th">Final</th>
+            </tr>
+          </thead>
+          <tbody>
+            <div *ngIf="!studentList" class="loader">
+              <app-spinner></app-spinner>
+            </div>
+            <tr *ngFor="let item of studentList">
+              <td class="table__td">{{item.name}}</td>
+              <td class="table__td">{{item.lastName}}</td>
+              <td class="table__td">{{item.note1}}</td>
+              <td class="table__td">{{item.note2}}</td>
+              <td class="table__td">{{item.note3}}</td>
+              <td class="table__td">
+                  <a class="subject__link" (click)="openModalToUpdate(item)">Editar</a>
+              </td>
+              <td class="table__td">
+                  <a class="subject__link subject__link--update" (click)="removeStudent(item.$key)">Eliminar</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+
+  <div class='modal' [ngStyle]="{'display': display}">
+    <div class="modal__dialog">
+      <div class="modal__content">
+        <div class="modal__form">
+          <div class="form">
+            <div class="modal__header">
+              <img  class="modal__close" src="https://image.flaticon.com/icons/svg/190/190406.svg" (click)="closeModal()" alt="Cerrar">
+            </div>
+            <h1 *ngIf="updateStudent">{{updateStudent.name}}</h1>
+
+            <h5 class="form__title">Actualizar estudiante</h5>
+            <form class="form__form" (submit)="updateStudents()" *ngIf="updateStudent" [formGroup]="updateForm">
+              <label for="nameUpdate" class="form__label">Nombres:</label>
+              <input *ngIf="updateStudent"
+                      formControlName="nameUpdate"
+                      type="text"
+                      name="nameUpdate"
+                      class="form__input">
+
+              <label for="lastNameUpdate" class="form__label">Apellidos:</label>
+              <input *ngIf="updateStudent"
+                      formControlName="lastNameUpdate"
+                      type="text"
+                      name="lastNameUpdate"
+                      class="form__input">
+
+              <label for="note1Update" class="form__label">Nota seguimiento:</label>
+              <input *ngIf="updateStudent"
+                      formControlName="note1Update"
+                      type="number"
+                      name="note1Update"
+                      class="form__input">
+
+              <label for="note2Update" class="form__label">Nota parcial:</label>
+              <input *ngIf="updateStudent"
+                      formControlName="note2Update"
+                      type="number"
+                      name="note2Update"
+                      class="form__input">
+
+              <label for="note3Update" class="form__label">Nota final:</label>
+              <input *ngIf="updateStudent"
+                      formControlName="note3Update"
+                      type="number"
+                      name="note3Update"
+                      class="form__input">
+
+              <input  type="submit" value="Actualizar" class="form__submit">
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

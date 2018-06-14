@@ -1,0 +1,30 @@
+@import '../shared/mixins.scss';
+@import '../shared/variables.scss';
+@import '../shared/typography.scss';
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+
+  &__container {
+    text-align: center;
+  }
+
+  &__message {
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    margin-bottom: 16px;
+  }
+
+  &__link {
+    background: color(principal-color);
+    color: color(white);
+    padding: 8px;
+    border-radius: 5px;
+  }
+}

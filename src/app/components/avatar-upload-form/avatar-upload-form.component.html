@@ -1,0 +1,13 @@
+<div *ngIf="currentUpload" class="container">
+  <div class="progress">
+    <div class="progress__bar" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+  </div>
+  <b>Progress:</b> {{currentUpload?.name}} | {{currentUpload?.progress.toFixed(2)}}% Complete
+</div>
+
+<div class="upload">
+  <label class="upload__label"> Seleccionar archivo
+    <input type="file" (change)="detectFiles($event)" class="upload__input">
+  </label>
+  <button [disabled]="!selectedFiles" (click)="uploadSingle()" class="upload__button"> Subir foto </button>
+</div>

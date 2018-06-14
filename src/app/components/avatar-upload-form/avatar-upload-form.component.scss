@@ -1,0 +1,61 @@
+@import '../shared/mixins.scss';
+@import '../shared/variables.scss';
+@import '../shared/typography.scss';
+
+.container {
+  margin: 16px 0;
+}
+
+.progress {
+  background: color(border-color);
+  max-width: 50%;
+
+  &__bar {
+    width: 0;
+    max-width: 100%;
+    background: color(principal-color);
+    height: 10px;
+    display: block;
+  }
+}
+
+.upload {
+  display: flex;
+
+  &__label {
+    padding: 8px;
+    font-family: $font-title;
+    text-transform: uppercase;
+    background: darken(color(border-color), 10);
+    border: 2px solid color(border-color);
+    color: color(font-color);
+    margin-right: 24px;
+    cursor: pointer;
+    transition: background .3s ease;
+    border-radius: 5px;
+
+    &:hover {
+      background: darken(color(border-color), 20);
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__button {
+    padding: 8px;
+    font-family: $font-title;
+    text-transform: uppercase;
+    background: color(principal-color);
+    border: 2px solid color(border-color);
+    color: color(white);
+    cursor: pointer;
+    transition: background .3s ease;
+    border-radius: 5px;
+
+    &:hover {
+      background: darken(color(principal-color), 10);
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<div class="container l-container">
+  <div class="subjects">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="table__th">Nombres</th>
+          <th class="table__th">Apellidos</th>
+          <th class="table__th">Seguimiento</th>
+          <th class="table__th">Parcial</th>
+          <th class="table__th">Final</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div *ngIf="!studentList" class="loader">
+          <app-spinner></app-spinner>
+        </div>
+        <tr *ngFor="let item of studentList">
+          <td class="table__td">{{item.name}}</td>
+          <td class="table__td">{{item.lastName}}</td>
+          <td class="table__td">{{item.note1}}</td>
+          <td class="table__td">{{item.note2}}</td>
+          <td class="table__td">{{item.note3}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

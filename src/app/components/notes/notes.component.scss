@@ -1,0 +1,76 @@
+@import '../shared/mixins.scss';
+@import '../shared/variables.scss';
+@import '../shared/typography.scss';
+
+.container {
+  position: relative;
+  padding: 16px 0;
+  margin-top: 16px;
+
+  @include from($large) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .subjects {
+
+    &__list {
+      @include from($large) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 16px;
+      }
+    }
+
+    &__item {
+      box-shadow: 0 0 5px color(border-color);
+      padding: 16px;
+      transition: all .3s ease;
+      width: 400px;
+
+      &:hover {
+        box-shadow: 0 0 5px darken(color(border-color), 10);
+        cursor: pointer;
+      }
+
+      .subject {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        position: relative;
+
+        &__links {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        &__name {
+          font-size: 22px;
+        }
+
+        &__code{
+          margin-top: 8px;
+        }
+
+        &__link {
+          width: 100%;
+          text-align: center;
+          color: white;
+          margin-top: 32px;
+          border: 2px solid color(border-color);
+          padding: 4px;
+          text-transform: uppercase;
+
+          &:first-child {
+            background: color(principal-color);
+          }
+        }
+      }
+    }
+  }
+
+}

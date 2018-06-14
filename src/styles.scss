@@ -1,0 +1,40 @@
+@import './app/components/shared/typography.scss';
+@import './app/components/shared/variables.scss';
+@import './app/components/shared/typography.scss';
+@import './app/components/shared/mixins.scss';
+@import './app/components/shared/base.scss';
+
+
+.alert {
+
+  &__success {
+    width: 80%;
+    margin: 0 auto;
+    background: rgba(color(principal-color), .8);
+    border: 2px solid color(border-color);
+    text-align: center;
+    padding: 16px;
+    color: color(white);
+    font-family: $font-title;
+  }
+
+  &__error {
+    width: 80%;
+    margin: 0 auto;
+    background: rgba(color(secondary-color), .8);
+    border: 2px solid color(border-color);
+    text-align: center;
+    padding: 16px;
+    color: color(white);
+    font-family: $font-title;
+  }
+}
+
+.alert__profile {
+  margin-bottom: 16px;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: 20%;
+  z-index: 50;
+}

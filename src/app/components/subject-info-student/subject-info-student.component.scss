@@ -1,0 +1,96 @@
+@import '../shared/mixins.scss';
+@import '../shared/variables.scss';
+@import '../shared/typography.scss';
+
+.container {
+  position: relative;
+  padding: 16px 0;
+  margin-top: 16px;
+
+  .subjects {
+    width: 100%;
+
+    &__list {
+      @include from($large) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &__item {
+      box-shadow: 2px 2px 2px color(border-color);
+      padding: 16px;
+      width: 100%;
+
+      .subject {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        width: 100%;
+
+        &__links {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        &__name {
+          font-size: 22px;
+        }
+
+        &__code{
+          margin-top: 8px;
+        }
+
+        &__link {
+          width: 100%;
+          text-align: center;
+          color: white;
+          margin-top: 32px;
+          border: 2px solid color(border-color);
+          padding: 4px;
+          text-transform: uppercase;
+
+          &:first-child {
+            background: color(principal-color);
+          }
+
+          &:last-child {
+            background: color(danger-color);
+          }
+        }
+      }
+    }
+  }
+
+  .table {
+    width: 100%;
+    border: 1px solid color(border-color);
+    border-collapse: collapse;
+
+    tr {
+      &:nth-child(even) {
+        background: rgba(color(border-color), .3);
+      }
+    }
+
+    &__th {
+      padding: 8px;
+      text-transform: uppercase;
+      border: 1px solid color(border-color);
+      background: rgba(color(principal-color), .02);
+    }
+
+    &__td {
+      text-align: center;
+      padding: 4px 0;
+      border: 1px solid color(border-color);
+    }
+
+  }
+
+}

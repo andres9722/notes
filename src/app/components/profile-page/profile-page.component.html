@@ -1,0 +1,19 @@
+<div class="profile l-container">
+  <section class="profile__info">
+    <img *ngIf="userActiveAvatar" src={{userActiveAvatar}} alt="Avatar" class="profile__avatar">
+
+    <h1 *ngIf="userActive" class="profile__title" >HOLA! {{userInfo.firstName}}</h1>
+
+    <p *ngIf="userInfo" class="profile__text"> <b>Correo electrónico: </b> {{userActive.email}}</p>
+    <p *ngIf="userActive" class="profile__text"> <b>Tipo de usuario: </b> {{userActive.rol}}</p>
+
+    <h1 *ngIf="userInfo" class="profile__title--avatar" >{{userInfo.firstName}} Coloca tu foto de perfil!</h1>
+    <div *ngIf="!userInfo || !userActive" class="loader">
+      <app-spinner></app-spinner>
+    </div>
+
+    <app-avatar-upload-form></app-avatar-upload-form>
+
+  </section>
+</div>
+

@@ -1,0 +1,18 @@
+<div class="container l-container">
+  <div class="subjects">
+    <ul class="subjects__list">
+      <li class="subjects__item" *ngFor="let item of subjectList">
+        <div *ngIf="!subjectList" class="loader">
+          <app-spinner></app-spinner>
+        </div>
+        <div class="subject">
+          <h4 class="subject__name">{{item.name}}</h4>
+          <p class="subject__code"> <b>Código: </b> {{item.code}}</p>
+          <article class="subject__links">
+            <a class="subject__link" [routerLink]="['/subjectss/subject', item.$key]">Ver</a>
+          </article>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

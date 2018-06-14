@@ -1,0 +1,35 @@
+<div class="container l-container">
+  <div class="form">
+    <h1 class="form__title">Agregar grupo</h1>
+    <form action="" class="form__form" (submit)="addSubject()" [formGroup]="subjectForm">
+      <label for="name" class="form__label">Nombre:</label>
+      <input [ngClass]="!subjectForm.controls['name'].valid && subjectForm.controls['name'].touched ? 'form__input form__input--invalid' : 'form__input'"
+      class="form__input" formControlName="name" type="name" name="name" placeholder="Nombre" [(ngModel)]="name">
+
+      <label for="code" class="form__label">Código:</label>
+      <input [ngClass]="!subjectForm.controls['code'].valid && subjectForm.controls['code'].touched ? 'form__input form__input--invalid' : 'form__input'"
+              formControlName="code" type="code" name="code" placeholder="Código" class="form__input" [(ngModel)]="code">
+
+      <input [disabled]="!subjectForm.valid" type="submit" value="Crear" class="form__submit">
+    </form>
+
+  </div>
+
+  <div class="subjects">
+    <ul class="subjects__list">
+      <li class="subjects__item" *ngFor="let item of subjectList">
+        <div *ngIf="!subjectList" class="loader">
+          <app-spinner></app-spinner>
+        </div>
+        <div class="subject">
+          <h4 class="subject__name">{{item.name}}</h4>
+          <p class="subject__code"> <b>Código: </b> {{item.code}}</p>
+          <article class="subject__links">
+            <a class="subject__link" [routerLink]="['/subjects/subject', item.$key]">Ver</a>
+            <a class="subject__link" (click)="removeSubject(item.$key)">Eliminar</a>
+          </article>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
